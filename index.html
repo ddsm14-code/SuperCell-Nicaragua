@@ -18,8 +18,6 @@
             --tt: #000000;
             --whatsapp: #25D366;
             --credex: #e11d48;
-            --google: #4285F4;
-            --waze: #33CCFF;
         }
 
         * {
@@ -42,12 +40,7 @@
             padding: 0 1.25rem;
         }
 
-        .icon {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-
-        /* --- HEADER & NAVIGATION --- */
+        /* --- HEADER --- */
         .header {
             background-color: var(--dark);
             color: var(--white);
@@ -64,21 +57,18 @@
             height: 80px;
         }
 
-        .logo {
-            cursor: pointer;
-            z-index: 1100;
-        }
-
         .logo-img {
             height: 60px;
             width: auto;
             object-fit: contain;
             display: block;
+            cursor: pointer;
         }
 
+        /* Desktop Nav */
         .nav-desktop {
             display: none;
-            gap: 1.5rem;
+            gap: 1rem;
             height: 100%;
         }
 
@@ -95,10 +85,11 @@
         .nav-link {
             color: var(--white);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem;
             cursor: pointer;
+            transition: 0.3s;
             display: flex;
             align-items: center;
             gap: 4px;
@@ -111,13 +102,13 @@
             top: 100%;
             left: 0;
             background: #111;
-            min-width: 180px;
+            min-width: 160px;
             border-top: 3px solid var(--primary);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.5);
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
-            transition: all 0.3s ease;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
         .nav-item:hover .dropdown {
@@ -128,21 +119,33 @@
 
         .dropdown-link {
             display: block;
-            padding: 0.8rem 1.2rem;
+            padding: 0.75rem 1rem;
             color: white;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border-bottom: 1px solid #222;
         }
 
         .dropdown-link:hover { background: #222; color: var(--primary); }
 
-        /* Mobile Controls */
-        .mobile-controls {
+        /* WhatsApp Header Icon */
+        .phone-box {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: 0.3s;
         }
+
+        .phone-box:hover { background: var(--whatsapp); }
+
+        .whatsapp-svg { width: 1.2rem; height: 1.2rem; fill: white; }
 
         .menu-toggle {
             display: block;
@@ -152,324 +155,131 @@
             cursor: pointer;
         }
 
-        @media (min-width: 1024px) {
-            .menu-toggle { display: none; }
-        }
+        @media (min-width: 1024px) { .menu-toggle { display: none; } }
 
-        /* Phone & WhatsApp Link */
-        .phone-whatsapp-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--white);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            background: rgba(255,255,255,0.1);
-            padding: 0.5rem 0.75rem;
-            border-radius: 2rem;
-            transition: background 0.3s;
-        }
-
-        .phone-whatsapp-link:hover {
-            background: var(--whatsapp);
-            color: white;
-        }
-
-        .whatsapp-icon {
-            width: 1.5rem;
-            height: 1.5rem;
-            fill: currentColor;
-        }
-
-        /* Sidebar */
+        /* --- SIDEBAR MOBILE --- */
         .sidebar {
             position: fixed;
-            top: 0;
-            right: -100%;
-            width: 280px;
-            height: 100%;
-            background: #111;
-            z-index: 2000;
-            transition: 0.4s ease;
-            padding: 2rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            top: 0; right: -100%; width: 280px; height: 100%;
+            background: #111; z-index: 2000; transition: 0.4s;
+            padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;
         }
-
         .sidebar.active { right: 0; }
-
-        .overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); z-index: 1500; display: none;
-        }
-
+        .sidebar-link { color: white; text-decoration: none; font-size: 1.1rem; font-weight: 600; padding: 0.6rem 0; border-bottom: 1px solid #222; cursor: pointer; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1500; display: none; }
         .overlay.active { display: block; }
 
-        .sidebar-link {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #333;
-            cursor: pointer;
-        }
-
-        /* Hero */
+        /* --- HERO BANNER --- */
         .hero {
-            background: linear-gradient(135deg, #111 0%, #000 100%);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
+            width: 100%;
+            background-image: url('https://scontent.fmga3-2.fna.fbcdn.net/v/t39.30808-6/482013235_1035703471947172_615377252944334028_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=CDrTyvrUOaYQ7kNvwHt8x9J&_nc_oc=AdmmdQmfTMjUhWQcxtiP3UyJc9BTqwp-NFDE5-F9Xv3qPB_wQp0Bdm0iWj7OjYhbBf4&_nc_zt=23&_nc_ht=scontent.fmga3-2.fna&_nc_gid=QyM-YkjPRLM1jXSjvVX09w&oh=00_AfqpiXIzMWP85Fx8kAI5FoDAYzPSVPGMExuMmQL9fAS_Lw&oe=696502EB');
+            background-size: cover;
+            background-position: center;
+            aspect-ratio: 16 / 7;
+            min-height: 200px;
         }
 
-        .hero-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--primary);
-            text-transform: uppercase;
-        }
-
-        @media (min-width: 768px) {
-            .hero-title { font-size: 3.5rem; }
-            .hero-subtitle { font-size: 1.5rem; }
-        }
-
-        /* --- FINANCING VIEW --- */
+        /* --- FINANCING SECTION --- */
         .financing-view {
-            padding: 3rem 0;
+            display: none;
+            padding: 4rem 0;
             text-align: center;
         }
 
         .financing-card {
             background: white;
-            padding: 2.5rem;
+            padding: 3rem 2rem;
             border-radius: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            max-width: 800px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 700px;
             margin: 0 auto;
-            border: 1px solid #eee;
         }
 
-        .financing-card h2 {
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-
-        .credex-highlight {
-            background: #fff1f2;
+        .credex-title {
             color: var(--credex);
-            padding: 1.5rem;
-            border-radius: 1rem;
-            font-weight: 800;
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            border: 2px solid var(--credex);
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
         }
 
-        .bank-list {
+        .bank-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 10px;
+            margin: 2rem 0;
         }
 
-        .bank-tag {
-            background: #f3f4f6;
-            color: var(--dark);
-            padding: 0.5rem 1.25rem;
-            border-radius: 2rem;
-            font-weight: bold;
+        .bank-badge {
+            background: #f1f5f9;
+            color: #334155;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            font-weight: 800;
             font-size: 0.9rem;
+            border: 1px solid #e2e8f0;
         }
 
-        .financing-btn {
-            display: inline-block;
-            margin-top: 2rem;
-            background: var(--whatsapp);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 0.75rem;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .financing-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-        }
-
-        /* Products */
+        /* --- PRODUCTS --- */
+        .main-content { padding: 3rem 0; }
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
-
-        @media (min-width: 640px) {
-            .products-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
-        }
+        @media (min-width: 640px) { .products-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; } }
 
         .product-card {
             background: white;
-            border-radius: 0.75rem;
+            border-radius: 1rem;
             overflow: hidden;
             border: 1px solid #eee;
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s;
+            transition: 0.3s;
         }
-
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-
-        .product-img-box {
-            width: 100%;
-            height: 160px;
-            background: #f8f8f8;
-            padding: 10px;
-        }
-
-        @media (min-width: 640px) { .product-img-box { height: 200px; } }
-
+        .product-img-container { width: 100%; height: 180px; background: #f8f8f8; padding: 15px; }
         .product-img { width: 100%; height: 100%; object-fit: contain; }
+        .product-info { padding: 1.2rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .product-name { font-weight: bold; font-size: 0.95rem; margin-bottom: 0.5rem; min-height: 2.8rem; }
+        .product-price { color: var(--primary); font-size: 1.4rem; font-weight: 900; margin-bottom: 1rem; }
+        .buy-btn { width: 100%; background: var(--dark); color: white; border: none; padding: 0.8rem; border-radius: 0.5rem; font-weight: bold; cursor: pointer; margin-top: auto; }
 
-        .product-info { padding: 1rem; flex-grow: 1; display: flex; flex-direction: column; }
-        .product-name { font-weight: bold; font-size: 0.9rem; margin-bottom: 0.25rem; min-height: 2.6rem; overflow: hidden; }
-        .product-price { color: var(--primary); font-size: 1.25rem; font-weight: 800; }
-
-        .buy-btn {
-            width: 100%;
-            background: var(--dark);
-            color: white;
-            border: none;
-            padding: 0.6rem;
-            border-radius: 0.5rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 1rem;
-            font-size: 0.85rem;
-        }
-
-        .buy-btn:hover { background: #333; }
-
-        /* --- MAP SECTION --- */
-        .location-section {
-            background: white;
-            padding: 2.5rem 0;
-            margin-top: 3rem;
-            border-top: 1px solid #eee;
-        }
-
-        .location-title {
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-        }
-
-        .map-wrapper {
-            width: 100%;
-            height: 350px;
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 4px solid white;
-        }
-
-        .map-actions {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-nav {
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: opacity 0.3s;
-        }
-
-        .btn-nav:hover { opacity: 0.9; }
-        .btn-google { background: var(--google); }
-        .btn-waze { background: var(--waze); }
-
-        /* Footer */
-        .footer {
-            background: var(--dark);
-            color: #9ca3af;
-            padding: 3rem 0;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        .footer h3 { color: white; margin-bottom: 1rem; font-size: 1.1rem; }
-        .footer p { font-size: 0.85rem; margin-bottom: 0.4rem; }
-
-        .social-links { display: flex; gap: 0.75rem; margin-top: 1rem; }
-        .social-btn {
-            width: 36px; height: 36px; border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; color: white; transition: 0.3s;
-        }
-        .social-fb { background: var(--fb); }
-        .social-ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #bc1888); }
-        .social-tt { background: black; border: 1px solid #333; }
-
+        /* --- BACK BUTTON --- */
         .back-btn {
             display: none;
-            align-items: center;
-            gap: 0.5rem;
             background: #eee;
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 2rem;
             font-weight: bold;
             cursor: pointer;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
+            margin-bottom: 2rem;
         }
-        .back-btn.active { display: inline-flex; }
+        .back-btn.active { display: inline-block; }
 
+        /* --- MAP --- */
+        .map-section { padding: 3rem 0; background: white; margin-top: 3rem; }
+        .map-frame { width: 100%; height: 350px; border-radius: 1rem; border: 4px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        /* --- FOOTER --- */
+        .footer { background: var(--dark); color: #9ca3af; padding: 4rem 0; margin-top: 3rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .footer h3 { color: white; margin-bottom: 1.2rem; font-size: 1.1rem; }
+        .social-links { display: flex; gap: 10px; margin-top: 1rem; }
+        .social-btn { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; }
     </style>
 </head>
 <body>
 
     <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
-    <!-- Menú Lateral -->
+    <!-- Sidebar Mobile -->
     <nav class="sidebar" id="sidebar">
-        <h2 style="color: white; font-size: 1.5rem; margin-bottom: 1rem;">SuperCell</h2>
+        <h2 style="color: white; margin-bottom: 1rem;">SuperCell</h2>
         <a onclick="filterCategory('Todos')" class="sidebar-link">Inicio</a>
         <a onclick="filterCategory('iPhones')" class="sidebar-link">iPhones</a>
         <a onclick="filterCategory('Android')" class="sidebar-link">Android</a>
@@ -483,14 +293,13 @@
     <!-- Header -->
     <header class="header">
         <div class="container header-content">
-            <a onclick="filterCategory('Todos')" class="logo">
-                <img src="https://scontent.fmga3-2.fna.fbcdn.net/v/t39.30808-6/613084505_122199684464565816_895500520486502714_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=cKXhuV8KjzcQ7kNvwFjMWlH&_nc_oc=AdnNPuMVOsVTbAq5l4-23-vzTX1nH9_IagTDqkSsIs-r0Qqg9F0YIh2neerAxXHgaD4&_nc_zt=23&_nc_ht=scontent.fmga3-2.fna&_nc_gid=4856zRsnFCWdCCmKO8968Q&oh=00_Afr1d3DfoEkcOZWqor6HuC35cMGTy3U_juMa9S_Lf2f7og&oe=696477AC" alt="SuperCell Logo" class="logo-img">
-            </a>
+            <img src="https://scontent.fmga3-2.fna.fbcdn.net/v/t39.30808-6/613084505_122199684464565816_895500520486502714_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=cKXhuV8KjzcQ7kNvwFjMWlH&_nc_oc=AdnNPuMVOsVTbAq5l4-23-vzTX1nH9_IagTDqkSsIs-r0Qqg9F0YIh2neerAxXHgaD4&_nc_zt=23&_nc_ht=scontent.fmga3-2.fna&_nc_gid=4856zRsnFCWdCCmKO8968Q&oh=00_Afr1d3DfoEkcOZWqor6HuC35cMGTy3U_juMa9S_Lf2f7og&oe=696477AC" 
+                 alt="Logo" class="logo-img" onclick="filterCategory('Todos')">
             
             <nav class="nav-desktop">
                 <div class="nav-item"><a onclick="filterCategory('Todos')" class="nav-link">Inicio</a></div>
                 <div class="nav-item">
-                    <a class="nav-link">Smartphones <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+                    <a class="nav-link">Smartphones ▼</a>
                     <div class="dropdown">
                         <a onclick="filterCategory('iPhones')" class="dropdown-link">iPhones</a>
                         <a onclick="filterCategory('Android')" class="dropdown-link">Android</a>
@@ -500,83 +309,61 @@
                 <div class="nav-item"><a onclick="filterCategory('Consolas')" class="nav-link">Consolas</a></div>
                 <div class="nav-item"><a onclick="filterCategory('Televisores')" class="nav-link">Televisores</a></div>
                 <div class="nav-item"><a onclick="filterCategory('Accesorios')" class="nav-link">Accesorios</a></div>
-                <div class="nav-item"><a onclick="showFinancing()" class="nav-link" style="color: var(--primary); font-weight: 800;">Financiamientos</a></div>
+                <div class="nav-item"><a onclick="showFinancing()" class="nav-link" style="color: var(--primary);">Financiamientos</a></div>
             </nav>
 
-            <div class="mobile-controls">
-                <a href="https://wa.me/50578820291" target="_blank" class="phone-whatsapp-link">
-                    <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <a href="https://wa.me/50578820291" target="_blank" class="phone-box">
+                    <svg class="whatsapp-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     <span>+505 78820291</span>
                 </a>
-                <button class="menu-toggle" onclick="toggleSidebar()">
-                    <svg class="icon" style="width: 2rem; height: 2rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-                </button>
+                <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
             </div>
         </div>
     </header>
 
-    <!-- Hero -->
-    <section class="hero" id="hero">
-        <div class="container">
-            <h1 class="hero-title">SuperCell Nicaragua</h1>
-            <p class="hero-subtitle">CON LOS MEJORES SUPER PRECIOS!!</p>
-        </div>
-    </section>
+    <!-- Banner Hero -->
+    <section class="hero" id="hero"></section>
 
-    <!-- Main Content -->
+    <!-- Content -->
     <main class="container main-content">
-        <button class="back-btn" id="backBtn" onclick="filterCategory('Todos')">
-            ← Volver al Inicio
-        </button>
-        
-        <!-- Vista de Financiamientos -->
-        <div id="financingSection" class="financing-view" style="display:none;">
+        <button class="back-btn" id="backBtn" onclick="filterCategory('Todos')">← Volver al Inicio</button>
+
+        <!-- Financiamiento View -->
+        <div id="financingView" class="financing-view">
             <div class="financing-card">
-                <h2>Financiamientos Disponibles</h2>
-                <div class="credex-highlight">
-                    SOLICITA TU CRÉDITO DE CREDEX CON NOSOTROS
+                <h2 class="credex-title">Solicita tu Crédito de Credex con nosotros</h2>
+                <p style="font-weight: 600; color: #64748b;">Aceptamos todas las tarjetas de crédito y débito:</p>
+                <div class="bank-grid">
+                    <span class="bank-badge">BAC</span>
+                    <span class="bank-badge">LAFISE</span>
+                    <span class="bank-badge">BANPRO</span>
+                    <span class="bank-badge">FICOHSA</span>
+                    <span class="bank-badge">BDF</span>
                 </div>
-                <p style="color: var(--gray); font-weight: 600; margin-bottom: 1rem;">Aceptamos todas las tarjetas de los bancos:</p>
-                <div class="bank-list">
-                    <span class="bank-tag">BAC</span>
-                    <span class="bank-tag">LAFISE</span>
-                    <span class="bank-tag">BANPRO</span>
-                    <span class="bank-tag">FICOHSA</span>
-                    <span class="bank-tag">BDF</span>
-                </div>
-                <a href="https://wa.me/50578820291?text=Hola,%20quisiera%20solicitar%20financiamiento" target="_blank" class="financing-btn">
-                    Contactar a un Asesor
+                <a href="https://wa.me/50578820291?text=Hola,%20me%20interesa%20solicitar%20financiamiento" target="_blank" 
+                   style="background:var(--whatsapp); color:white; padding:1rem 2rem; border-radius:0.5rem; text-decoration:none; font-weight:bold; display:inline-block;">
+                    Consultar con un Asesor
                 </a>
             </div>
         </div>
 
-        <!-- Vista de Productos -->
+        <!-- Products View -->
         <div id="productsView">
-            <h2 id="categoryTitle" style="font-size: 1.5rem; font-weight: 800;">Todos los Productos</h2>
-            <p id="productCount" style="color: var(--gray); font-size: 0.85rem; margin-bottom: 1rem;">Cargando...</p>
-            <div class="products-grid" id="productsGrid">
-                <!-- Productos generados por JS -->
-            </div>
+            <h2 id="categoryTitle" style="font-weight: 900;">Todos los Productos</h2>
+            <p id="productCount" style="color:var(--gray); margin-bottom: 2rem;">Cargando...</p>
+            <div class="products-grid" id="productsGrid"></div>
         </div>
     </main>
 
-    <!-- MAP SECTION -->
-    <section class="location-section" id="mapSection">
+    <!-- Map -->
+    <section class="map-section" id="mapSection">
         <div class="container">
-            <h2 class="location-title">VISÍTANOS EN NUESTRA TIENDA</h2>
-            <div class="map-wrapper">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.288277264663!2d-86.15578762500001!3d12.1580145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f73fe0000000001%3A0x0000000000000000!2sResidencial%20Valle%20Verde%2C%20Managua!5e0!3m2!1ses!2sni!4v1700000000000!5m2!1ses!2sni" 
-                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-            <div class="map-actions">
-                <a href="https://www.google.com/maps/dir/?api=1&destination=Residencial+Valle+Verde+Managua" target="_blank" class="btn-nav btn-google">
-                    Google Maps
-                </a>
-                <a href="https://waze.com/ul?q=Residencial+Valle+Verde+Managua" target="_blank" class="btn-nav btn-waze">
-                    Waze
-                </a>
+            <h2 style="text-align: center; margin-bottom: 2rem; font-weight: 900;">VISÍTANOS EN NUESTRA TIENDA</h2>
+            <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.288277264663!2d-86.15578762500001!3d12.1580145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f73fe0000000001%3A0x0000000000000000!2sResidencial%20Valle%20Verde%2C%20Managua!5e0!3m2!1ses!2sni!4v1700000000000!5m2!1ses!2sni" allowfullscreen="" loading="lazy"></iframe>
+            <div style="display:flex; justify-content:center; gap:10px; margin-top:1.5rem;">
+                <a href="https://maps.app.goo.gl/9R6P7YyW6x7Hj8V87" target="_blank" style="background:#4285F4; color:white; padding:0.6rem 1.2rem; border-radius:0.5rem; text-decoration:none; font-weight:bold;">Google Maps</a>
+                <a href="https://waze.com/ul?q=Residencial+Valle+Verde+Managua" target="_blank" style="background:#33CCFF; color:white; padding:0.6rem 1.2rem; border-radius:0.5rem; text-decoration:none; font-weight:bold;">Waze</a>
             </div>
         </div>
     </section>
@@ -585,15 +372,16 @@
     <footer class="footer">
         <div class="container footer-grid">
             <div>
-                <h3>REDES SOCIALES</h3>
+                <h3>SÍGUENOS</h3>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/celularesSuperCel" target="_blank" class="social-btn social-fb"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.03 1.764-5.908 5.43-5.908 1.489 0 3.002.16 3.002.16v2.533h-1.297c-1.202 0-1.577.747-1.577 1.513v1.282h3.283l-.525 3.667h-2.758v7.98H9.101z"/></svg></a>
-                    <a href="https://www.instagram.com/supercellmanagua/" target="_blank" class="social-btn social-ig"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-                    <a href="https://www.tiktok.com/@supercelmanagua" target="_blank" class="social-btn social-tt"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.06-1.4-.13-.08-.23-.17-.34-.26v7.2c.12 5.23-5.55 8.77-10.1 6.19-3.34-1.83-4.52-6.46-2.47-9.65 1.49-2.33 4.24-3.48 6.94-2.9v4.13c-1.44-.41-3.11-.14-4.29.83-1.12.91-1.54 2.53-.98 3.88.61 1.47 2.39 2.21 3.83 1.61 1.04-.44 1.63-1.54 1.57-2.66.01-4.01.01-8.02.01-12.03h.01z"/></svg></a>
+                    <a href="https://www.facebook.com/celularesSuperCel" target="_blank" class="social-btn" style="background:#1877F2;">FB</a>
+                    <a href="https://www.instagram.com/supercellmanagua/" target="_blank" class="social-btn" style="background:linear-gradient(45deg, #f09433, #e6683c, #dc2743, #bc1888);">IG</a>
+                    <a href="https://www.tiktok.com/@supercelmanagua" target="_blank" class="social-btn" style="background:black; border:1px solid #333;">TT</a>
                 </div>
             </div>
             <div>
-                <h3>UBICACIÓN</h3>
+                <h3>CONTACTO</h3>
+                <p>📞 +505 78820291</p>
                 <p>📍 Km 14 Carretera Norte Valle Verde Casa AM-45.</p>
                 <p>✉️ valeriatoledo1399@gmail.com</p>
             </div>
@@ -603,36 +391,19 @@
                 <p>Domingos: Cerrado</p>
             </div>
         </div>
-        <p style="text-align: center; margin-top: 2rem; border-top: 1px solid #333; padding-top: 1.5rem; font-size: 0.8rem;">
-            &copy; 2026 SuperCell Nicaragua.
-        </p>
+        <p style="text-align:center; margin-top:3rem; font-size:0.8rem;">&copy; 2026 SuperCell Nicaragua.</p>
     </footer>
 
     <script>
         const products = [
-            // iPhones
-            { id: 'i1', name: 'iPhone 13 (128GB)', price: 510, description: '1 SIM + ESIM', category: 'iPhones', image: 'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500' },
-            { id: 'i2', name: 'iPhone 16 (128GB)', price: 740, description: '1 SIM + ESIM', category: 'iPhones', image: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500' },
-            { id: 'i3', name: 'iPhone 17 Pro (256GB)', price: 1220, description: 'ESIM Novedad', category: 'iPhones', image: 'https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=500' },
-            
-            // Android
-            { id: 'a1', name: 'Samsung A17 (128/6)', price: 175, description: 'DS Dual Sim', category: 'Android', image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=500' },
-            { id: 'a2', name: 'Infinix NOTE 50 PRO', price: 235, description: '256/16 DS', category: 'Android', image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500' },
-            { id: 'a3', name: 'Samsung S25 Ultra 5G', price: 955, description: '256/12 DS', category: 'Android', image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=500' },
-            
-            // MacBooks
-            { id: 'm1', name: 'MacBook Air 13" M4', price: 1350, description: '512 SSD / 16GB', category: 'MacBooks', image: 'https://images.unsplash.com/photo-1517336714460-4c9883a95af1?w=500' },
-            { id: 'm2', name: 'MacBook Pro 14" M4', price: 2070, description: '1TB SSD / 16GB', category: 'MacBooks', image: 'https://images.unsplash.com/photo-1517336714460-4c9883a95af1?w=500' },
-            
-            // Consolas
-            { id: 'c1', name: 'PlayStation 5 Slim 1TB', price: 590, description: 'Disc Edition', category: 'Consolas', image: 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=500' },
-            
-            // Televisores
-            { id: 'v1', name: 'Samsung QLED 65" 4K', price: 1299, description: 'Smart TV Tizen', category: 'Televisores', image: 'https://images.unsplash.com/photo-1763132646264-4123ae7cf4a6?w=500' },
-            
-            // Accesorios
-            { id: 'x1', name: 'Redmi Watch 5 Active', price: 60, description: 'Smartwatch Black', category: 'Accesorios', image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500' },
-            { id: 'x2', name: 'Realme Buds Air 7', price: 75, description: 'Audio Premium', category: 'Accesorios', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500' }
+            { name: 'iPhone 13 (128GB)', price: 510, category: 'iPhones', img: 'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=400' },
+            { name: 'iPhone 16 (128GB)', price: 740, category: 'iPhones', img: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400' },
+            { name: 'Samsung A17 (128/6)', price: 175, category: 'Android', img: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400' },
+            { name: 'Samsung S25 Ultra', price: 955, category: 'Android', img: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400' },
+            { name: 'MacBook Air 13" M4', price: 1350, category: 'MacBooks', img: 'https://images.unsplash.com/photo-1517336714460-4c9883a95af1?w=400' },
+            { name: 'PS5 Slim 1TB', price: 590, category: 'Consolas', img: 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=400' },
+            { name: 'Samsung QLED 65"', price: 1299, category: 'Televisores', img: 'https://images.unsplash.com/photo-1763132646264-4123ae7cf4a6?w=400' },
+            { name: 'Redmi Watch 5 Active', price: 60, category: 'Accesorios', img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400' }
         ];
 
         function toggleSidebar() {
@@ -641,74 +412,53 @@
         }
 
         function showFinancing() {
-            const productsView = document.getElementById('productsView');
-            const financingSection = document.getElementById('financingSection');
-            const backBtn = document.getElementById('backBtn');
-            const hero = document.getElementById('hero');
-            const mapSec = document.getElementById('mapSection');
-
-            productsView.style.display = 'none';
-            financingSection.style.display = 'block';
-            hero.style.display = 'none';
-            mapSec.style.display = 'none';
-            backBtn.classList.add('active');
-
-            toggleSidebar(); // Cierra el sidebar si está en móvil
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            document.getElementById('productsView').style.display = 'none';
+            document.getElementById('financingView').style.display = 'block';
+            document.getElementById('hero').style.display = 'none';
+            document.getElementById('mapSection').style.display = 'none';
+            document.getElementById('backBtn').classList.add('active');
+            if(document.getElementById('sidebar').classList.contains('active')) toggleSidebar();
         }
 
-        function filterCategory(category) {
+        function filterCategory(cat) {
             const grid = document.getElementById('productsGrid');
-            const productsView = document.getElementById('productsView');
-            const financingSection = document.getElementById('financingSection');
-            const title = document.getElementById('categoryTitle');
-            const backBtn = document.getElementById('backBtn');
+            const view = document.getElementById('productsView');
+            const fin = document.getElementById('financingView');
             const hero = document.getElementById('hero');
-            const mapSec = document.getElementById('mapSection');
+            const map = document.getElementById('mapSection');
+            const btn = document.getElementById('backBtn');
 
-            const filtered = category === 'Todos' ? products : products.filter(p => p.category === category);
-            
-            title.textContent = category === 'Todos' ? 'Todos los Productos' : category;
-            document.getElementById('productCount').textContent = `${filtered.length} productos disponibles`;
+            view.style.display = 'block';
+            fin.style.display = 'none';
 
-            productsView.style.display = 'block';
-            financingSection.style.display = 'none';
+            const filtered = cat === 'Todos' ? products : products.filter(p => p.category === cat);
+            document.getElementById('categoryTitle').innerText = cat === 'Todos' ? 'Todos los Productos' : cat;
+            document.getElementById('productCount').innerText = filtered.length + ' productos disponibles';
 
-            if(category === 'Todos') {
+            if(cat === 'Todos') {
                 hero.style.display = 'block';
-                mapSec.style.display = 'block';
-                backBtn.classList.remove('active');
+                map.style.display = 'block';
+                btn.classList.remove('active');
             } else {
                 hero.style.display = 'none';
-                mapSec.style.display = 'none';
-                backBtn.classList.add('active');
+                map.style.display = 'none';
+                btn.classList.add('active');
             }
-
-            document.getElementById('sidebar').classList.remove('active');
-            document.getElementById('overlay').classList.remove('active');
 
             grid.innerHTML = filtered.map(p => `
                 <div class="product-card">
-                    <div class="product-img-box">
-                        <img src="${p.image}" class="product-img" alt="${p.name}">
-                    </div>
+                    <div class="product-img-container"><img src="${p.img}" class="product-img"></div>
                     <div class="product-info">
                         <div class="product-name">${p.name}</div>
-                        <p style="font-size: 0.7rem; color: #666; margin-bottom: 0.5rem;">${p.description}</p>
-                        <div style="margin-top: auto;">
-                            <span class="product-price">$${p.price}</span>
-                            <button class="buy-btn" onclick="openWhatsApp('${p.name}')">Comprar</button>
-                        </div>
+                        <div class="product-price">$${p.price}</div>
+                        <button class="buy-btn" onclick="window.open('https://wa.me/50578820291?text=Me%20interesa%20${p.name}')">Comprar</button>
                     </div>
                 </div>
             `).join('');
-
+            
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
             window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-
-        function openWhatsApp(name) {
-            const msg = encodeURIComponent(`Hola SuperCell, me interesa el ${name}. ¿Está disponible?`);
-            window.open(`https://wa.me/50578820291?text=${msg}`, '_blank');
         }
 
         window.onload = () => filterCategory('Todos');
